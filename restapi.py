@@ -1,6 +1,6 @@
 
 from flask import Flask
-from flask.ext.restful import Api, Resource, request
+from flask.ext.restful import Api, Resource, request, abort
 
 import redis
 
@@ -24,6 +24,8 @@ class NodeListResource(Resource):
 
     def post(self, key=None):
         info = flat_dict(request.form)
+        if not info:
+            abort(400, message="failed to create node with empty info")
         node_key = nlevel.node(r, info, parent=key)
         return nlevel.info(r, node_key)
 
