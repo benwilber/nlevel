@@ -1,7 +1,7 @@
 nlevel
 ======
 
-N-level hierarchical nodes built on redis
+N-level hierarchies built on redis
 
 setup & running
 ---------------
