@@ -67,24 +67,3 @@ def nodes(r, key):
 def roots(r):
     return nodes(r, "nlevel_roots")
 
-
-
-if __name__ == '__main__':
-    import redis
-    r = redis.Redis()
-    key = node(r, {"name": 1})
-    for i in range(1, 20):
-        k = node(r, {"name": i}, parent=key)
-        print nodes(r, key)
-        key = k
-
-    print roots(r)
-
-
-
-
-
-
-
-
-
